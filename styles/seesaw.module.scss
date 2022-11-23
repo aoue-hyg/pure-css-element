@@ -1,0 +1,57 @@
+.container {
+  --ball-height: 40px;
+
+  .stick {
+    width: 200px;
+    height: 20px;
+    background-color: white;
+    border-radius: 25px;
+    transform: rotate(15deg);
+    animation: seesaw 3s ease-in-out 1.5s infinite alternate;
+  }
+
+  .ball {
+    position: relative;
+    bottom: var(--ball-height);
+    width: var(--ball-height);
+    height: var(--ball-height);
+    background-color: white;
+    border-radius: 50%;
+    animation: ball-move 3s ease-in-out 1.5s infinite alternate;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      left: 10px;
+      bottom: 10px;
+      width: calc(var(--ball-height) / 10);
+      height: calc(var(--ball-height) / 10);
+      border-radius: 50%;
+      background-color: black;
+    }
+  }
+
+
+  @keyframes seesaw {
+    from {
+      transform: rotate(15deg);
+    }
+
+    to {
+      transform: rotate(-15deg);
+    }
+  }
+
+  @keyframes ball-move {
+    from {
+      left: 0px;
+      transform: rotate(0deg);
+    }
+
+    to {
+      left: calc(100% - var(--ball-height));
+      transform: rotate(360deg);
+    }
+  }
+}
